@@ -42,7 +42,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -97,7 +97,6 @@
 <layer number="219" name="219bmp" color="20" fill="1" visible="no" active="no"/>
 <layer number="220" name="220bmp" color="21" fill="1" visible="no" active="no"/>
 <layer number="221" name="221bmp" color="22" fill="1" visible="no" active="no"/>
-<layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -111,7 +110,12 @@
 <wire x1="30.46" y1="33.96" x2="0" y2="33.96" width="0" layer="20"/>
 <wire x1="0" y1="33.96" x2="0" y2="0" width="0" layer="20"/>
 <text x="19.05" y="31.115" size="0.8128" layer="25">1</text>
-<text x="28.575" y="0.635" size="0.8128" layer="26" rot="MR0">Copyright (c) 2014 Robert M Diamond, for Fawn Qiu</text>
+<text x="27.94" y="0.635" size="0.6096" layer="26" rot="MR0">Copyright (c) 2014 Robert M Diamond, for Fawn Qiu</text>
+<hole x="1.27" y="1.27" drill="1.5"/>
+<hole x="1.27" y="32.385" drill="1.5"/>
+<hole x="29.21" y="32.385" drill="1.5"/>
+<hole x="29.21" y="1.27" drill="1.5"/>
+<text x="8.89" y="6.985" size="1.016" layer="25">+</text>
 </plain>
 <libraries>
 <library name="Atmel_By_element14_Batch_1-00">
@@ -1629,7 +1633,7 @@ design rules under a new name.</description>
 <attribute name="MPN" value="" x="60.96" y="59.69" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="" x="60.96" y="59.69" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="60.96" y="59.69" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="29.7449" y="21.6169" size="0.8128" layer="25" ratio="10" rot="R90"/>
+<attribute name="NAME" x="22.1249" y="20.3469" size="0.8128" layer="25" ratio="10" rot="R90"/>
 </element>
 <element name="ROLLING_SERVO" library="con-molex" package="6410-03" value="22-27-2031-03" x="25.4" y="15.24" smashed="yes" rot="R90">
 <attribute name="OC_NEWARK" value="unknown" x="50.8" y="36.83" size="1.778" layer="27" rot="R90" display="off"/>
@@ -1643,7 +1647,7 @@ design rules under a new name.</description>
 <attribute name="MPN" value="" x="50.8" y="41.91" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="" x="50.8" y="41.91" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="50.8" y="41.91" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="29.3101" y="9.4981" size="0.8128" layer="25" ratio="10" rot="R270"/>
+<attribute name="NAME" x="21.0551" y="10.7681" size="0.8128" layer="25" ratio="10" rot="R270"/>
 </element>
 <element name="REED_SWITCH" library="con-molex" package="6410-02" value="22-27-2021-02" x="5.08" y="26.67" smashed="yes" rot="R270">
 <attribute name="OC_NEWARK" value="unknown" x="-30.48" y="5.08" size="1.778" layer="27" rot="R270" display="off"/>
@@ -1658,7 +1662,6 @@ design rules under a new name.</description>
 <attribute name="MF" value="" x="44.45" y="-40.64" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="44.45" y="-40.64" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="12.7269" y="8.3551" size="0.8128" layer="25" ratio="10"/>
-<attribute name="VALUE" x="12.7269" y="0.4811" size="0.8128" layer="27" ratio="10"/>
 </element>
 <element name="POWER_IN" library="con-molex" package="6410-02" value="22-27-2021-02" x="5.08" y="6.35" smashed="yes" rot="R270">
 <attribute name="OC_NEWARK" value="unknown" x="-40.64" y="-12.7" size="1.778" layer="27" rot="R270" display="off"/>
