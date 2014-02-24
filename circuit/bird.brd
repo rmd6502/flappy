@@ -111,6 +111,7 @@
 <wire x1="30.46" y1="33.96" x2="0" y2="33.96" width="0" layer="20"/>
 <wire x1="0" y1="33.96" x2="0" y2="0" width="0" layer="20"/>
 <text x="19.05" y="31.115" size="0.8128" layer="25">1</text>
+<text x="28.575" y="0.635" size="0.8128" layer="26" rot="MR0">Copyright (c) 2014 Robert M Diamond, for Fawn Qiu</text>
 </plain>
 <libraries>
 <library name="Atmel_By_element14_Batch_1-00">
