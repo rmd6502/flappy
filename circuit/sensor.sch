@@ -6625,6 +6625,7 @@ Provides reference voltage</text>
 <wire x1="86.36" y1="43.18" x2="61.214" y2="43.18" width="0.1524" layer="97" style="shortdash"/>
 <wire x1="61.214" y1="43.18" x2="60.96" y2="43.434" width="0.1524" layer="97" style="shortdash" curve="-90"/>
 <wire x1="60.96" y1="43.434" x2="60.96" y2="91.44" width="0.1524" layer="97" style="shortdash"/>
+<frame x1="-17.78" y1="-17.78" x2="165.1" y2="149.86" columns="8" rows="5" layer="97"/>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="66.04" y="50.8"/>
