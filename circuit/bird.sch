@@ -7977,10 +7977,6 @@ Source: www.kingbright.com</description>
 <part name="LED1" library="led" deviceset="LED" device="5MM" value="red"/>
 <part name="R1" library="rcl" deviceset="R-US_" device="R1206" value="500"/>
 <part name="P+1" library="supply1" deviceset="+5V" device=""/>
-<part name="R2" library="rcl" deviceset="R-US_" device="R0603" value="10k 1%"/>
-<part name="R3" library="rcl" deviceset="R-US_" device="R0603" value="10k 1%"/>
-<part name="U$5" library="SparkFun" deviceset="5V" device=""/>
-<part name="GND8" library="SparkFun" deviceset="GND" device=""/>
 <part name="J1" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="U$6" library="SparkFun" deviceset="5V" device=""/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
@@ -8021,10 +8017,6 @@ Source: www.kingbright.com</description>
 <instance part="LED1" gate="G$1" x="68.58" y="40.64"/>
 <instance part="R1" gate="G$1" x="68.58" y="50.8" rot="R90"/>
 <instance part="P+1" gate="1" x="68.58" y="63.5"/>
-<instance part="R2" gate="G$1" x="-20.32" y="-10.16"/>
-<instance part="R3" gate="G$1" x="-5.08" y="-10.16"/>
-<instance part="U$5" gate="G$1" x="-30.48" y="-2.54"/>
-<instance part="GND8" gate="1" x="7.62" y="-20.32"/>
 <instance part="J1" gate="-1" x="121.92" y="-5.08"/>
 <instance part="J1" gate="-2" x="121.92" y="-10.16"/>
 <instance part="J1" gate="-3" x="121.92" y="-15.24"/>
@@ -8076,12 +8068,6 @@ Source: www.kingbright.com</description>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="68.58" y1="55.88" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
-</segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="-25.4" y1="-10.16" x2="-30.48" y2="-10.16" width="0.1524" layer="91"/>
-<wire x1="-30.48" y1="-10.16" x2="-30.48" y2="-2.54" width="0.1524" layer="91"/>
-<pinref part="U$5" gate="G$1" pin="5V"/>
 </segment>
 <segment>
 <pinref part="J1" gate="-1" pin="S"/>
@@ -8138,12 +8124,6 @@ Source: www.kingbright.com</description>
 <wire x1="5.08" y1="78.74" x2="15.24" y2="78.74" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="78.74" x2="17.78" y2="78.74" width="0.1524" layer="91"/>
 <label x="15.24" y="78.74" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="0" y1="-10.16" x2="7.62" y2="-10.16" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="-10.16" x2="7.62" y2="-17.78" width="0.1524" layer="91"/>
-<pinref part="GND8" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="J1" gate="-2" pin="S"/>
@@ -8253,23 +8233,6 @@ Source: www.kingbright.com</description>
 <pinref part="U1" gate="A" pin="PA2"/>
 <wire x1="20.32" y1="43.18" x2="35.56" y2="43.18" width="0.1524" layer="91"/>
 <label x="22.86" y="43.18" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="MAGNETIC_REFERENCE" class="0">
-<segment>
-<pinref part="U1" gate="A" pin="PA3"/>
-<wire x1="20.32" y1="40.64" x2="38.1" y2="40.64" width="0.1524" layer="91"/>
-<label x="22.86" y="40.64" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="2"/>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="-15.24" y1="-10.16" x2="-12.7" y2="-10.16" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="-10.16" x2="-10.16" y2="-10.16" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="-10.16" x2="-12.7" y2="2.54" width="0.1524" layer="91"/>
-<junction x="-12.7" y="-10.16"/>
-<wire x1="-12.7" y1="2.54" x2="10.16" y2="2.54" width="0.1524" layer="91"/>
-<label x="-10.16" y="2.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ROLL_SERVO" class="0">
