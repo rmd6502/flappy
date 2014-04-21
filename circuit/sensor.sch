@@ -6596,6 +6596,35 @@ Source: AVX .. aphvc.pdf</description>
 <text x="56.896" y="5.334" size="1.778" layer="95" rot="R90">+5V</text>
 <text x="59.182" y="4.318" size="1.778" layer="95" rot="R90">GND</text>
 <text x="61.722" y="4.572" size="1.778" layer="95" rot="R90">OUT</text>
+<wire x1="30.48" y1="106.68" x2="50.546" y2="106.68" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="50.546" y1="106.68" x2="50.8" y2="106.426" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="50.8" y1="106.426" x2="50.8" y2="63.5" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="50.8" y1="63.5" x2="30.734" y2="63.5" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="30.734" y1="63.5" x2="30.48" y2="63.754" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="30.48" y1="63.754" x2="30.48" y2="106.68" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="91.44" y1="101.6" x2="114.046" y2="101.6" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="114.046" y1="101.6" x2="114.3" y2="101.346" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="114.3" y1="101.346" x2="114.3" y2="55.88" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="114.3" y1="55.88" x2="91.694" y2="55.88" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="91.694" y1="55.88" x2="91.44" y2="56.134" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="91.44" y1="56.134" x2="91.44" y2="101.6" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="2.54" y1="83.82" x2="27.686" y2="83.82" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="27.686" y1="83.82" x2="27.94" y2="83.566" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="27.94" y1="83.566" x2="27.94" y2="50.8" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="27.94" y1="50.8" x2="2.794" y2="50.8" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="2.794" y1="50.8" x2="2.54" y2="51.054" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="2.54" y1="51.054" x2="2.54" y2="83.82" width="0.1524" layer="97" style="shortdash"/>
+<text x="2.54" y="83.82" size="1.778" layer="97">Linear Hall Effect Sensor</text>
+<text x="27.94" y="106.68" size="1.778" layer="97">Voltage Divider
+Provides reference voltage</text>
+<text x="93.98" y="101.6" size="1.778" layer="97">Low pass filter</text>
+<text x="63.5" y="93.98" size="1.778" layer="97">Inverting Amplifier</text>
+<wire x1="60.96" y1="91.44" x2="86.106" y2="91.44" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="86.106" y1="91.44" x2="86.36" y2="91.186" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="86.36" y1="91.186" x2="86.36" y2="43.18" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="86.36" y1="43.18" x2="61.214" y2="43.18" width="0.1524" layer="97" style="shortdash"/>
+<wire x1="61.214" y1="43.18" x2="60.96" y2="43.434" width="0.1524" layer="97" style="shortdash" curve="-90"/>
+<wire x1="60.96" y1="43.434" x2="60.96" y2="91.44" width="0.1524" layer="97" style="shortdash"/>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="66.04" y="50.8"/>
@@ -6746,4 +6775,10 @@ Source: AVX .. aphvc.pdf</description>
 </sheets>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
