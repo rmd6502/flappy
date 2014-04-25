@@ -14,6 +14,13 @@ boolean in_game =false;
 Servo myservoRoll;
 Servo myservoBird;
 Servo myservoGame;
+
+#define BOX_OPEN 90
+#define BOX_CLOSE 0
+
+#define CHARACTER_BOTTOM 40
+#define CHARACTER_TOP 85
+
 int melody[] = {
   NOTE_C4, NOTE_G3,NOTE_G3, NOTE_A3, NOTE_G3,0, NOTE_B3, NOTE_C4};// notes in the melody:
 int noteDurations[] = {
@@ -32,7 +39,7 @@ void setup()
   myservoBird.attach(6);
   myservoRoll.attach(5);
   myservoGame.attach(8);
-  myservoGame.write(0); 
+  myservoGame.write(BOX_CLOSE); 
   pinMode(magnetPin, INPUT);  //reed
   pinMode(buttonPin, INPUT); //button 
   pinMode(ledPin, OUTPUT);   
@@ -47,8 +54,8 @@ void loop() {
 
   //start game 
   if (startState == HIGH && in_game==false){
-    myservoGame.write(85); //open box
-    birdup=40; //bird position
+    myservoGame.write(BOX_OPEN); //open box
+    birdup=CHARACTER_BOTTOM; //bird position
     delay (700);
     myservoRoll.write(60); //roll background
 
@@ -73,7 +80,7 @@ void loop() {
     }
     else
     {
-      if(birdup < 85){
+      if(birdup < CHARACTER_TOP){
         birdup+=1; //going up
         delay(10);
       }
@@ -88,7 +95,7 @@ void loop() {
 
     mySerial.println(birdup);
     //game over; when bird hits ground
-    if (birdup >84)
+    if (birdup >= CHARACTER_TOP)
     {
       game_over();
     }
@@ -104,10 +111,10 @@ void loop() {
 void game_over(){
   //reset all the variables
   in_game =false;
-  birdup = 40;
+  birdup = CHARACTER_BOTTOM;
   released = true;
   myservoRoll.write(90); //stop roll background
-  myservoGame.write(0); //close game box
+  myservoGame.write(BOX_CLOSE); //close game box
   myservoBird.write(birdup);//bird go back to position 40
   digitalWrite(ledPin, HIGH);
   for (int thisNote = 0; thisNote < 8; thisNote++) {
