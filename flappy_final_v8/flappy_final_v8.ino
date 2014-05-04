@@ -1,4 +1,3 @@
-//#include <SoftwareSerial.h>
 #include <Servo.h> 
 #include "pitches.h"
 
@@ -10,11 +9,11 @@
 
 const uint8_t magnetPin = 1;     // the number of the reed switch
 const uint8_t buttonPin = 0;  // the number of the pushbutton pin for bird
-const uint8_t speakerPin = 8;
-const uint8_t rollServoPin = 5;
-const uint8_t characterServoPin = 6;
+const uint8_t speakerPin = 7;
+const uint8_t rollServoPin = 10;
+const uint8_t characterServoPin = 9;
 const uint8_t lidServoPin = 8;
-const uint8_t ledPin =  3;      // the number of the LED pin
+const uint8_t ledPin =  2;      // the number of the LED pin
 
 uint16_t magnetState = 0;         // variable
 uint8_t buttonState = 0;         // variable 
@@ -35,11 +34,8 @@ int jumpmusic[] = {
 uint8_t jumpDurations[] = {
   4}; // note durations: 4 = quarter note, 8 = eighth note, etc.:
 
-//SoftwareSerial mySerial(4,2);
 void setup() 
 { 
-  //mySerial.begin(9600); //setup usb communication
-
   myservoBird.attach(characterServoPin);
   myservoRoll.attach(rollServoPin);
   myservoGame.attach(lidServoPin);
@@ -61,6 +57,7 @@ void loop() {
     myservoRoll.write(60); //roll background
 
     in_game=true;
+    released = false;
   }
   if(in_game==true)
   {
@@ -71,12 +68,11 @@ void loop() {
         birdup-=10; //going up
 
       }
-      for (int thisNote = 0; thisNote < 1; thisNote++) {
+      for (int thisNote = 0; thisNote < (sizeof(jumpmusic)/sizeof(jumpmusic[0])); thisNote++) {
         int jumpDuration = 1000/jumpDurations[thisNote];
         tone(speakerPin, jumpmusic[thisNote],jumpDuration);
         int pauseBetweenNotes = jumpDuration * 13 / 10;
         delay(pauseBetweenNotes);
-        //noTone(1);
       }
     }
     else
@@ -94,7 +90,6 @@ void loop() {
     myservoBird.write(birdup);
     delay (50);
 
-    //mySerial.println(birdup);
     //game over; when bird hits ground
     if (birdup >= CHARACTER_TOP)
     {
@@ -118,12 +113,11 @@ void game_over(){
   myservoGame.write(BOX_CLOSE); //close game box
   myservoBird.write(birdup);//bird go back to position 40
   digitalWrite(ledPin, HIGH);
-  for (int thisNote = 0; thisNote < 8; thisNote++) {
+  for (int thisNote = 0; thisNote < (sizeof(melody)/sizeof(melody[0])); thisNote++) {
     int noteDuration = 1000/noteDurations[thisNote];
     tone(speakerPin, melody[thisNote],noteDuration);
     int pauseBetweenNotes = noteDuration * 13 / 10;
     delay(pauseBetweenNotes);
-    //noTone(8);
   }
 }
 
