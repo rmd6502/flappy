@@ -6254,6 +6254,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="0.7" y1="0.85" x2="1.2" y2="1.5" layer="51"/>
 <rectangle x1="-1.2" y1="0.85" x2="-0.7" y2="1.5" layer="51"/>
 </package>
+<package name="PAD.02X.02">
+<smd name="P$1" x="0" y="0" dx="0.508" dy="0.508" layer="1"/>
+</package>
+<package name="PAD.03X.03">
+<smd name="P$1" x="0" y="0" dx="0.762" dy="0.762" layer="1" roundness="100" cream="no"/>
+</package>
+<package name="PAD.03X.05">
+<smd name="P$1" x="0" y="0" dx="1.27" dy="1.27" layer="1" roundness="100" cream="no"/>
+</package>
 </packages>
 <symbols>
 <symbol name="5V">
@@ -6290,6 +6299,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <wire x1="12.7" y1="12.7" x2="15.24" y2="12.7" width="0.254" layer="94"/>
 <pin name="VDD" x="7.62" y="33.02" length="middle" direction="pwr" rot="R270"/>
 <pin name="VSS" x="7.62" y="-5.08" length="middle" direction="pwr" rot="R90"/>
+</symbol>
+<symbol name="TEST-POINT">
+<wire x1="2.54" y1="0" x2="0" y2="0" width="0.1524" layer="94"/>
+<wire x1="3.302" y1="0.762" x2="3.302" y2="-0.762" width="0.1524" layer="94" curve="180"/>
+<text x="-2.54" y="2.54" size="1.778" layer="95">&gt;Name</text>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;Value</text>
+<pin name="1" x="0" y="0" visible="off" length="point" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -6330,6 +6346,37 @@ We've spent an enormous amount of time creating and checking these footprints an
 <connect gate="G$1" pin="VDD" pad="5"/>
 <connect gate="G$1" pin="VOUT" pad="1"/>
 <connect gate="G$1" pin="VSS" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="TEST-POINT" prefix="TP">
+<gates>
+<gate name="G$1" symbol="TEST-POINT" x="0" y="0"/>
+</gates>
+<devices>
+<device name="2" package="PAD.02X.02">
+<connects>
+<connect gate="G$1" pin="1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3" package="PAD.03X.03">
+<connects>
+<connect gate="G$1" pin="1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3X5" package="PAD.03X.05">
+<connects>
+<connect gate="G$1" pin="1" pad="P$1"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -8539,6 +8586,7 @@ Source: www.cypressindustries.com</description>
 <part name="S1" library="switch" deviceset="TL32PO" device=""/>
 <part name="X1" library="con-cypressindustries" deviceset="MINI-USB-" device="32005-201"/>
 <part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
+<part name="TP1" library="SparkFun" deviceset="TEST-POINT" device="2"/>
 </parts>
 <sheets>
 <sheet>
@@ -8639,6 +8687,7 @@ Provides reference voltage</text>
 <instance part="S1" gate="BEF1" x="-33.02" y="58.42" rot="R90"/>
 <instance part="X1" gate="G$1" x="-114.3" y="-20.32" rot="R180"/>
 <instance part="GND8" gate="1" x="-134.62" y="-20.32"/>
+<instance part="TP1" gate="G$1" x="50.8" y="45.72"/>
 </instances>
 <busses>
 </busses>
@@ -8945,6 +8994,9 @@ Provides reference voltage</text>
 <pinref part="U1" gate="A" pin="PA3"/>
 <wire x1="20.32" y1="40.64" x2="38.1" y2="40.64" width="0.1524" layer="91"/>
 <label x="22.86" y="40.64" size="1.778" layer="95"/>
+<pinref part="TP1" gate="G$1" pin="1"/>
+<wire x1="38.1" y1="40.64" x2="50.8" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="40.64" x2="50.8" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ROLL_SERVO" class="0">
