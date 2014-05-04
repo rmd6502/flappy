@@ -8,12 +8,17 @@
 #define CHARACTER_BOTTOM 40
 #define CHARACTER_TOP 85
 
-const int magnetPin = 1;     // the number of the reed switch
-const int buttonPin = 0;  // the number of the pushbutton pin for bird
-const int ledPin =  3;      // the number of the LED pin
-int magnetState = 0;         // variable
-int buttonState = 0;         // variable 
-int birdup = CHARACTER_BOTTOM; //start 
+const uint8_t magnetPin = 1;     // the number of the reed switch
+const uint8_t buttonPin = 0;  // the number of the pushbutton pin for bird
+const uint8_t speakerPin = 8;
+const uint8_t rollServoPin = 5;
+const uint8_t characterServoPin = 6;
+const uint8_t lidServoPin = 8;
+const uint8_t ledPin =  3;      // the number of the LED pin
+
+uint16_t magnetState = 0;         // variable
+uint8_t buttonState = 0;         // variable 
+uint8_t birdup = CHARACTER_BOTTOM; //start 
 boolean released = true;  
 boolean in_game =false;
 Servo myservoRoll;
@@ -22,12 +27,12 @@ Servo myservoGame;
 
 int melody[] = {
   NOTE_C4, NOTE_G3,NOTE_G3, NOTE_A3, NOTE_G3,0, NOTE_B3, NOTE_C4};// notes in the melody:
-int noteDurations[] = {
+uint8_t noteDurations[] = {
   4, 8, 8, 4,4,4,4,4 }; // note durations: 4 = quarter note, 8 = eighth note, etc.:
 
 int jumpmusic[] = {
   NOTE_A3};// notes in the melody:
-int jumpDurations[] = {
+uint8_t jumpDurations[] = {
   4}; // note durations: 4 = quarter note, 8 = eighth note, etc.:
 
 //SoftwareSerial mySerial(4,2);
@@ -35,18 +40,17 @@ void setup()
 { 
   //mySerial.begin(9600); //setup usb communication
 
-  myservoBird.attach(6);
-  myservoRoll.attach(5);
-  myservoGame.attach(8);
+  myservoBird.attach(characterServoPin);
+  myservoRoll.attach(rollServoPin);
+  myservoGame.attach(lidServoPin);
   myservoGame.write(BOX_CLOSE); 
   pinMode(magnetPin, INPUT);  //reed
   pinMode(buttonPin, INPUT_PULLUP); //button 
-  pinMode(ledPin, OUTPUT);   
-  digitalWrite(magnetPin, HIGH);   //internal pullup
+  pinMode(ledPin, OUTPUT);
 } 
 
 void loop() {
-  magnetState = digitalRead(magnetPin);
+  magnetState = analogRead(magnetPin);
   buttonState = digitalRead(buttonPin);
 
   //start game 
@@ -69,7 +73,7 @@ void loop() {
       }
       for (int thisNote = 0; thisNote < 1; thisNote++) {
         int jumpDuration = 1000/jumpDurations[thisNote];
-        tone(8, jumpmusic[thisNote],jumpDuration);
+        tone(speakerPin, jumpmusic[thisNote],jumpDuration);
         int pauseBetweenNotes = jumpDuration * 13 / 10;
         delay(pauseBetweenNotes);
         //noTone(1);
@@ -78,7 +82,7 @@ void loop() {
     else
     {
       if(birdup < CHARACTER_TOP){
-        birdup+=1; //going up
+        birdup+=1; //going down
         delay(10);
       }
     }
@@ -116,7 +120,7 @@ void game_over(){
   digitalWrite(ledPin, HIGH);
   for (int thisNote = 0; thisNote < 8; thisNote++) {
     int noteDuration = 1000/noteDurations[thisNote];
-    tone(8, melody[thisNote],noteDuration);
+    tone(speakerPin, melody[thisNote],noteDuration);
     int pauseBetweenNotes = noteDuration * 13 / 10;
     delay(pauseBetweenNotes);
     //noTone(8);
