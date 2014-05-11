@@ -8573,7 +8573,7 @@ Source: www.cypressindustries.com</description>
 <part name="GND10" library="SparkFun" deviceset="GND" device=""/>
 <part name="R2" library="rcl" deviceset="R-US_" device="R0805" value="47k"/>
 <part name="R3" library="rcl" deviceset="R-US_" device="R0805" value="10M"/>
-<part name="R4" library="rcl" deviceset="R-US_" device="R0805" value="100k"/>
+<part name="R4" library="rcl" deviceset="R-US_" device="R0805" value="90k"/>
 <part name="R5" library="rcl" deviceset="R-US_" device="R0805" value="100k"/>
 <part name="C5" library="rcl" deviceset="C-US" device="C0805" value="220pf"/>
 <part name="C6" library="rcl" deviceset="C-US" device="C0805" value=".01uf"/>
