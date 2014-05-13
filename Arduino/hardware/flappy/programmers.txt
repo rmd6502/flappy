@@ -1,0 +1,5 @@
+# See: http://code.google.com/p/arduino/wiki/Platforms
+
+dragonisp.name=Dragon ISP
+dragonisp.communication=usb
+dragonisp.protocol=dragon_isp
