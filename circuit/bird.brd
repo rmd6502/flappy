@@ -9672,8 +9672,10 @@ design rules under a new name.</description>
 <wire x1="36.8808" y1="30.7848" x2="35.052" y2="28.956" width="0.254" layer="1"/>
 <wire x1="36.8808" y1="31.6992" x2="36.8808" y2="30.7848" width="0.254" layer="1"/>
 <wire x1="35.3568" y1="33.2232" x2="36.8808" y2="31.6992" width="0.254" layer="1"/>
-<wire x1="5.1816" y1="33.2232" x2="35.3568" y2="33.2232" width="0.254" layer="1"/>
-<wire x1="5.1816" y1="28.3464" x2="5.1816" y2="33.2232" width="0.254" layer="1"/>
+<wire x1="7.4168" y1="33.2232" x2="35.3568" y2="33.2232" width="0.254" layer="1"/>
+<wire x1="5.1816" y1="28.3464" x2="5.1816" y2="31.0896" width="0.254" layer="1"/>
+<wire x1="5.1816" y1="31.0896" x2="7.3152" y2="33.2232" width="0.254" layer="1"/>
+<wire x1="7.3152" y1="33.2232" x2="7.4168" y2="33.2232" width="0.254" layer="1"/>
 <wire x1="11.5824" y1="21.9456" x2="5.1816" y2="28.3464" width="0.254" layer="1"/>
 <wire x1="35.052" y1="28.956" x2="34.99" y2="28.72" width="0.254" layer="1"/>
 </signal>
@@ -9946,8 +9948,8 @@ design rules under a new name.</description>
 <signal name="MAGNETIC_SENSOR_IN">
 <contactref element="J1" pad="3"/>
 <contactref element="R2" pad="1"/>
-<wire x1="4.8768" y1="19.5072" x2="9.144" y2="19.5072" width="0.254" layer="1"/>
-<wire x1="4.8768" y1="17.9832" x2="4.8768" y2="19.5072" width="0.254" layer="1"/>
+<wire x1="6.35" y1="19.5072" x2="9.144" y2="19.5072" width="0.254" layer="1"/>
+<wire x1="4.8768" y1="17.9832" x2="6.35" y2="19.5072" width="0.254" layer="1"/>
 <wire x1="9.144" y1="19.5072" x2="9.2172" y2="19.719" width="0.254" layer="1"/>
 <wire x1="4.8768" y1="17.9832" x2="4.845" y2="17.705" width="0.254" layer="1"/>
 </signal>
