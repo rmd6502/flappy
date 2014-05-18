@@ -8168,70 +8168,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 </deviceset>
 </devicesets>
 </library>
-<library name="switch">
-<description>&lt;b&gt;Switches&lt;/b&gt;&lt;p&gt;
-Marquardt, Siemens, C&amp;K, ITT, and others&lt;p&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="TL3XPO">
-<description>&lt;b&gt;TINY SWITCH&lt;/b&gt;&lt;p&gt;
-Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da-01-de-Subminiaturschalter_TL_36YO.pdf</description>
-<wire x1="-5.08" y1="2.54" x2="5.08" y2="2.54" width="0.2032" layer="21"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="5.08" y1="-2.54" x2="-5.08" y2="-2.54" width="0.2032" layer="21"/>
-<wire x1="-5.08" y1="-2.54" x2="-5.08" y2="2.54" width="0.2032" layer="21"/>
-<wire x1="-3.175" y1="1.27" x2="0" y2="1.27" width="0.2032" layer="51"/>
-<wire x1="-3.175" y1="-1.27" x2="0" y2="-1.27" width="0.2032" layer="51"/>
-<wire x1="0" y1="1.27" x2="0" y2="-1.27" width="0.2032" layer="51" curve="-180"/>
-<wire x1="-1.375" y1="1.275" x2="-1.35" y2="-1.3" width="0.2032" layer="51" curve="-273.242292"/>
-<circle x="-3.175" y="0" radius="1.27" width="0.2032" layer="51"/>
-<pad name="1" x="-2.54" y="0" drill="1.1" diameter="1.4224" shape="long" rot="R90"/>
-<pad name="2" x="0" y="0" drill="1.1" diameter="1.4224" shape="long" rot="R90"/>
-<pad name="3" x="2.54" y="0" drill="1.1" diameter="1.4224" shape="long" rot="R90"/>
-<text x="-5.08" y="3.175" size="1.778" layer="25">&gt;NAME</text>
-<text x="-5.08" y="-5.08" size="1.778" layer="27">&gt;VALUE</text>
-</package>
-</packages>
-<symbols>
-<symbol name="ON-MOM">
-<wire x1="0" y1="-3.175" x2="0" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="0" y1="-2.54" x2="-1.524" y2="3.048" width="0.254" layer="94"/>
-<wire x1="1.27" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="3.175" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="2.54" x2="-1.27" y2="2.54" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="2.54" x2="-2.54" y2="3.175" width="0.254" layer="94"/>
-<wire x1="0.508" y1="1.27" x2="1.016" y2="1.524" width="0.1524" layer="94"/>
-<wire x1="0.508" y1="1.27" x2="1.016" y2="1.016" width="0.1524" layer="94"/>
-<wire x1="0.508" y1="1.27" x2="1.524" y2="1.27" width="0.1524" layer="94"/>
-<text x="5.08" y="-2.54" size="1.778" layer="95" rot="R90">&gt;NAME</text>
-<text x="7.62" y="-2.54" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="P" x="0" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
-<pin name="S" x="2.54" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
-<pin name="O" x="-2.54" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="TL32PO" prefix="S">
-<description>&lt;b&gt;TINY SWITCH&lt;/b&gt; ON - MOM&lt;p&gt;
-Source: http://www2.produktinfo.conrad.com/datenblaetter/700000-724999/705152-da-01-de-Subminiaturschalter_TL_36YO.pdf</description>
-<gates>
-<gate name="BEF1" symbol="ON-MOM" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="TL3XPO">
-<connects>
-<connect gate="BEF1" pin="O" pad="1"/>
-<connect gate="BEF1" pin="P" pad="2"/>
-<connect gate="BEF1" pin="S" pad="3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="con-cypressindustries">
 <description>&lt;b&gt;Connectors from Cypress Industries&lt;/b&gt;&lt;p&gt;
 www.cypressindustries.com&lt;br&gt;
@@ -8545,7 +8481,7 @@ Source: www.cypressindustries.com</description>
 <part name="CHARACTER_SERVO" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="ROLLING_SERVO" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="START_BUTTON" library="con-molex" deviceset="22-?-02" device="27-2021"/>
-<part name="C1" library="rcl" deviceset="C-US" device="C1206" value=".1uF"/>
+<part name="C1" library="rcl" deviceset="C-US" device="C0603" value=".1uF"/>
 <part name="U$1" library="SparkFun" deviceset="5V" device="" value="4.5V"/>
 <part name="GND1" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND2" library="SparkFun" deviceset="GND" device=""/>
@@ -8563,16 +8499,16 @@ Source: www.cypressindustries.com</description>
 <part name="J1" library="con-molex" deviceset="22-?-03" device="27-2031"/>
 <part name="U$6" library="SparkFun" deviceset="5V" device=""/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
-<part name="C2" library="rcl" deviceset="C-US" device="C1210" value="10u"/>
-<part name="C3" library="rcl" deviceset="C-US" device="C1210" value="10u"/>
-<part name="C4" library="rcl" deviceset="C-US" device="C1210" value="10u"/>
+<part name="C2" library="rcl" deviceset="C-US" device="C0805" value="10u"/>
+<part name="C3" library="rcl" deviceset="C-US" device="C0805" value="10u"/>
+<part name="C4" library="rcl" deviceset="C-US" device="C0805" value="10u"/>
 <part name="SUPPLY1" library="SparkFun-Aesthetics" deviceset="5V" device=""/>
 <part name="GND9" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="U$5" library="SparkFun" deviceset="MCP601" device=""/>
 <part name="U$8" library="SparkFun" deviceset="5V" device=""/>
 <part name="GND10" library="SparkFun" deviceset="GND" device=""/>
 <part name="R2" library="rcl" deviceset="R-US_" device="R0603" value="47k"/>
-<part name="R3" library="rcl" deviceset="R-US_" device="R0805" value="10M"/>
+<part name="R3" library="rcl" deviceset="R-US_" device="R0603" value="10M"/>
 <part name="R4" library="rcl" deviceset="R-US_" device="R0603" value="90k"/>
 <part name="R5" library="rcl" deviceset="R-US_" device="R0603" value="100k"/>
 <part name="C5" library="rcl" deviceset="C-US" device="C0603" value="220pf"/>
@@ -8583,7 +8519,6 @@ Source: www.cypressindustries.com</description>
 <part name="GND12" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND13" library="SparkFun" deviceset="GND" device=""/>
 <part name="SG2" library="buzzer" deviceset="F/QMX" device=""/>
-<part name="S1" library="switch" deviceset="TL32PO" device=""/>
 <part name="X1" library="con-cypressindustries" deviceset="MINI-USB-" device="32005-201"/>
 <part name="GND8" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="TP1" library="SparkFun" deviceset="TEST-POINT" device="2"/>
@@ -8684,7 +8619,6 @@ Provides reference voltage</text>
 <instance part="GND12" gate="1" x="-203.2" y="15.24"/>
 <instance part="GND13" gate="1" x="-185.42" y="60.96"/>
 <instance part="SG2" gate="G$1" x="127" y="-35.56" rot="MR90"/>
-<instance part="S1" gate="BEF1" x="-33.02" y="58.42" rot="R90"/>
 <instance part="X1" gate="G$1" x="-114.3" y="-20.32" rot="R180"/>
 <instance part="GND8" gate="1" x="-134.62" y="-20.32"/>
 <instance part="TP1" gate="G$1" x="50.8" y="45.72"/>
@@ -8698,15 +8632,18 @@ Provides reference voltage</text>
 <pinref part="U$1" gate="G$1" pin="5V"/>
 <wire x1="-20.32" y1="53.34" x2="-20.32" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="-20.32" y1="48.26" x2="-15.24" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="-27.94" y1="58.42" x2="-25.4" y2="58.42" width="0.1524" layer="91"/>
-<wire x1="-25.4" y1="58.42" x2="-25.4" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="-25.4" y1="53.34" x2="-25.4" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="-25.4" y1="50.8" x2="-25.4" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="-25.4" y1="48.26" x2="-20.32" y2="48.26" width="0.1524" layer="91"/>
 <junction x="-20.32" y="48.26"/>
-<pinref part="S1" gate="BEF1" pin="P"/>
 <pinref part="C1" gate="G$1" pin="1"/>
 <wire x1="-45.72" y1="50.8" x2="-25.4" y2="50.8" width="0.1524" layer="91"/>
 <junction x="-25.4" y="50.8"/>
+<wire x1="-55.88" y1="53.34" x2="-45.72" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="-27.94" y1="53.34" x2="-40.64" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="-40.64" y1="53.34" x2="-45.72" y2="53.34" width="0.1524" layer="91"/>
+<label x="-55.88" y="53.34" size="1.778" layer="95"/>
+<wire x1="-27.94" y1="53.34" x2="-25.4" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="5V"/>
@@ -8775,6 +8712,11 @@ Provides reference voltage</text>
 <wire x1="-203.2" y1="30.48" x2="-198.12" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-198.12" y1="30.48" x2="-198.12" y2="27.94" width="0.1524" layer="91"/>
 <junction x="-203.2" y="30.48"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$1" pin="1"/>
+<wire x1="-109.22" y1="-25.4" x2="-73.66" y2="-25.4" width="0.1524" layer="91"/>
+<label x="-83.82" y="-25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -9088,21 +9030,6 @@ Provides reference voltage</text>
 <pinref part="X1" gate="G$1" pin="3"/>
 <wire x1="-109.22" y1="-20.32" x2="-91.44" y2="-20.32" width="0.1524" layer="91"/>
 <label x="-93.98" y="-20.32" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="USB_5V" class="0">
-<segment>
-<pinref part="X1" gate="G$1" pin="1"/>
-<wire x1="-109.22" y1="-25.4" x2="-73.66" y2="-25.4" width="0.1524" layer="91"/>
-<label x="-83.82" y="-25.4" size="1.778" layer="95"/>
-</segment>
-<segment>
-<wire x1="-55.88" y1="53.34" x2="-45.72" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="-38.1" y1="55.88" x2="-40.64" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="-40.64" y1="55.88" x2="-40.64" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="-40.64" y1="53.34" x2="-45.72" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="S1" gate="BEF1" pin="O"/>
-<label x="-55.88" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
