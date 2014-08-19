@@ -3,7 +3,6 @@
 static const uint8_t analog1 = 1;
 static const uint8_t servo = 10;
 
-Serial mySerial = Serial1
 Servo rollingServo;
 
 #define NUM_SAMPLES 64
@@ -25,8 +24,8 @@ void setup()
 //  DIDR0 = _BV(ADC1D) | _BV(ADC3D);
   pinMode(analog1, INPUT);
   rollingServo.attach(servo);
-  mySerial.begin(9600);
-  mySerial.println("Starting...");
+  Serial1.begin(9600);
+  Serial1.println("Starting...");
 }
 
 void loop()
@@ -46,5 +45,5 @@ void loop()
     int16_t delta = average - last;
     last = average;
     rollingServo.write(map(average, 275,330, 45,135));
-    mySerial.print(average);mySerial.print("  ");mySerial.println(delta);
+    Serial1.print(average);Serial1.print("  ");Serial1.println(delta);
 }
