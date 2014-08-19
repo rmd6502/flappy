@@ -1,10 +1,9 @@
-#include <SoftwareSerial.h>
 #include <Servo.h>
 
 static const uint8_t analog1 = 1;
 static const uint8_t servo = 10;
 
-SoftwareSerial mySerial(5,6);
+Serial mySerial = Serial1
 Servo rollingServo;
 
 #define NUM_SAMPLES 64
