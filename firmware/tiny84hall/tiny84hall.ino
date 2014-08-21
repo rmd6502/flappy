@@ -1,10 +1,8 @@
-#include <SoftwareSerial.h>
 #include <Servo.h>
 
-static const uint8_t analog1 = 2;
-static const uint8_t analog2 = 5;
+static const uint8_t analog1 = 1;
+static const uint8_t servo = 10;
 
-SoftwareSerial mySerial(4,0);
 Servo rollingServo;
 
 #define NUM_SAMPLES 64
@@ -14,20 +12,20 @@ uint8_t index = 0;
 
 void setup()
 {
-  // differential input = (ADC1-ADC3) * 20, vcc reference
-  ADMUX = (15 << MUX0) | (2 << REFS0);
-  // Enable ADC, 64x prescaler
-  ADCSRA = _BV(ADEN) | (6 << ADPS0);
-  // ADC3 is pulled at ~2.5v
-  ADCSRB = 0;
-  // start conversion
-  ADCSRA  |= _BV(ADSC);
-  
-  DIDR0 = _BV(ADC1D) | _BV(ADC3D);
-//  pinMode(1, OUTPUT);
-  rollingServo.attach(6);
-  mySerial.begin(9600);
-  mySerial.println("Starting...");
+//  // differential input = (ADC1-ADC3) * 20, vcc reference
+//  ADMUX = (15 << MUX0) | (2 << REFS0);
+//  // Enable ADC, 64x prescaler
+//  ADCSRA = _BV(ADEN) | (6 << ADPS0);
+//  // ADC3 is pulled at ~2.5v
+//  ADCSRB = 0;
+//  // start conversion
+//  ADCSRA  |= _BV(ADSC);
+//  
+//  DIDR0 = _BV(ADC1D) | _BV(ADC3D);
+  pinMode(analog1, INPUT);
+  rollingServo.attach(servo);
+  Serial1.begin(9600);
+  Serial1.println("Starting...");
 }
 
 void loop()
@@ -35,8 +33,8 @@ void loop()
   static uint16_t last = 0;
   uint16_t reading = 0;
   // Has the conversion finished?
-  if ((ADCSRA & _BV(ADSC)) == 0) {
-    reading = ADCL + (ADCH << 8);
+  
+    reading = analogRead(analog1);
     sum -= samples[index];
     sum += reading;
     samples[index++] = reading;
@@ -47,7 +45,5 @@ void loop()
     int16_t delta = average - last;
     last = average;
     rollingServo.write(map(average, 275,330, 45,135));
-    mySerial.print(average);mySerial.print("  ");mySerial.println(delta);
-    ADCSRA  |= _BV(ADSC);
-  }
+    Serial1.print(average);Serial1.print("  ");Serial1.println(delta);
 }
