@@ -5,7 +5,7 @@
 
 Servo rollingServo;
 
-#define NUM_SAMPLES 16
+#define NUM_SAMPLES 1
 uint16_t samples[NUM_SAMPLES] = {0};
 uint32_t sum = 0;
 uint8_t index = 0;
@@ -23,9 +23,11 @@ void setup()
 //  
 //  DIDR0 = _BV(ADC1D) | _BV(ADC3D);
   pinMode(hall_input, INPUT);
+  pinMode(led, OUTPUT);
   rollingServo.attach(roll_servo);
   Serial1.begin(115200);
   Serial1.println("Starting...");
+  digitalWrite(led, HIGH);
 }
 
 void loop()
