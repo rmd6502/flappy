@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.5.0">
+<eagle version="7.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9387,6 +9387,9 @@ design rules under a new name.</description>
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="12mil"/>
+<param name="AutoGrid" value="1"/>
+<param name="Efforts" value="0"/>
+<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
@@ -9478,7 +9481,7 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="U1" library="Atmel_By_element14_Batch_1-00" package="SOIC127P600X175-14N" value="ATTINY84-20SSU" x="23.06" y="14.2" smashed="yes">
+<element name="U1" library="Atmel_By_element14_Batch_1-00" package="SOIC127P600X175-14N" value="ATTINY841-20SSU" x="23.06" y="14.2" smashed="yes">
 <attribute name="PACKAGE" value="SOIC-14" x="57.35" y="5.31" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="03P2040" x="57.35" y="5.31" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="ATTINY84-20SSU" x="57.35" y="5.31" size="1.778" layer="27" display="off"/>

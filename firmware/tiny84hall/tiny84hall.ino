@@ -1,11 +1,11 @@
 #include <Servo.h>
 
-static const uint8_t analog1 = 1;
-static const uint8_t servo = 10;
+#include "flappy.h"
+
 
 Servo rollingServo;
 
-#define NUM_SAMPLES 64
+#define NUM_SAMPLES 16
 uint16_t samples[NUM_SAMPLES] = {0};
 uint32_t sum = 0;
 uint8_t index = 0;
@@ -22,9 +22,9 @@ void setup()
 //  ADCSRA  |= _BV(ADSC);
 //  
 //  DIDR0 = _BV(ADC1D) | _BV(ADC3D);
-  pinMode(analog1, INPUT);
-  rollingServo.attach(servo);
-  Serial1.begin(9600);
+  pinMode(hall_input, INPUT);
+  rollingServo.attach(roll_servo);
+  Serial1.begin(115200);
   Serial1.println("Starting...");
 }
 
@@ -34,7 +34,7 @@ void loop()
   uint16_t reading = 0;
   // Has the conversion finished?
   
-    reading = analogRead(analog1);
+    reading = analogRead(hall_input);
     sum -= samples[index];
     sum += reading;
     samples[index++] = reading;
@@ -46,4 +46,5 @@ void loop()
     last = average;
     rollingServo.write(map(average, 275,330, 45,135));
     Serial1.print(average);Serial1.print("  ");Serial1.println(delta);
+    delay(100);
 }
