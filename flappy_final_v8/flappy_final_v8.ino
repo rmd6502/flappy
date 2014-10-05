@@ -1,4 +1,5 @@
 #include <Servo.h> 
+#include "flappy.h"
 #include "pitches.h"
 
 #define BOX_OPEN 90
@@ -7,13 +8,13 @@
 #define CHARACTER_BOTTOM 40
 #define CHARACTER_TOP 85
 
-const uint8_t magnetPin = 1;     // the number of the reed switch
-const uint8_t buttonPin = 0;  // the number of the pushbutton pin for bird
-const uint8_t speakerPin = 7;
-const uint8_t rollServoPin = 10;
-const uint8_t characterServoPin = 9;
-const uint8_t lidServoPin = 8;
-const uint8_t ledPin =  2;      // the number of the LED pin
+const uint8_t magnetPin = hall_input;     // the number of the reed switch
+const uint8_t buttonPin = start_button;  // the number of the pushbutton pin for bird
+const uint8_t speakerPin = speaker;
+const uint8_t rollServoPin = background_servo;
+const uint8_t characterServoPin = character_servo;
+const uint8_t lidServoPin = box_servo;
+const uint8_t ledPin =  led;      // the number of the LED pin
 
 uint16_t magnetState = 0;         // variable
 uint8_t buttonState = 0;         // variable 
@@ -41,8 +42,12 @@ void setup()
   myservoGame.attach(lidServoPin);
   myservoGame.write(BOX_CLOSE); 
   pinMode(magnetPin, INPUT);  //reed
-  pinMode(buttonPin, INPUT_PULLUP); //button 
+  pinMode(buttonPin, INPUT); //button 
+  // Enable the pullup resistor for Port A0
+  bitSet(PUEA, 0);
   pinMode(ledPin, OUTPUT);
+  Serial1.begin(115200);
+  Serial1.println("Starting");
 } 
 
 void loop() {
@@ -51,6 +56,7 @@ void loop() {
 
   //start game 
   if (buttonState == LOW && in_game==false){
+    Serial1.println("Starting game");
     myservoGame.write(BOX_OPEN); //open box
     birdup=CHARACTER_BOTTOM; //bird position
     delay (700);
@@ -63,6 +69,7 @@ void loop() {
   {
     if ((buttonState == LOW) && released ==true)
     {
+      Serial1.println("up");
       released = false;    
       if(birdup > 10){
         birdup-=10; //going up
@@ -78,6 +85,7 @@ void loop() {
     else
     {
       if(birdup < CHARACTER_TOP){
+        Serial1.println("down");
         birdup+=1; //going down
         delay(10);
       }
@@ -93,11 +101,13 @@ void loop() {
     //game over; when bird hits ground
     if (birdup >= CHARACTER_TOP)
     {
+          Serial1.println("Game over 1");
       game_over();
     }
     //game over: when bird hit pipes
     if (magnetState == LOW) 
-    {    
+    {   
+         Serial1.println("Game over 2"); 
       game_over();
     }
   }
