@@ -38,20 +38,21 @@ uint8_t jumpDurations[] = {
 void setup() 
 { 
   myservoBird.attach(characterServoPin);
-  myservoRoll.attach(rollServoPin);
+  //myservoRoll.attach(rollServoPin);
   myservoGame.attach(lidServoPin);
   myservoGame.write(BOX_CLOSE); 
-  pinMode(magnetPin, INPUT);  //reed
-  pinMode(buttonPin, INPUT); //button 
+  pinMode(magnetPin, INPUT_PULLUP);  //reed
+  pinMode(buttonPin, INPUT_PULLUP); //button 
   // Enable the pullup resistor for Port A0
-  bitSet(PUEA, 0);
+  PUEA = (_BV(magnetPin) | _BV(buttonPin));
+//  bitSet(PUEA, _BV(magnetPin) | _BV(buttonPin));
   pinMode(ledPin, OUTPUT);
   Serial1.begin(115200);
   Serial1.println("Starting");
 } 
 
 void loop() {
-  magnetState = analogRead(magnetPin);
+  magnetState = digitalRead(magnetPin);
   buttonState = digitalRead(buttonPin);
 
   //start game 
@@ -60,7 +61,8 @@ void loop() {
     myservoGame.write(BOX_OPEN); //open box
     birdup=CHARACTER_BOTTOM; //bird position
     delay (700);
-    myservoRoll.write(60); //roll background
+    myservoRoll.attach(rollServoPin);
+    myservoRoll.write(90); //roll background
 
     in_game=true;
     released = false;
@@ -120,6 +122,7 @@ void game_over(){
   birdup = CHARACTER_BOTTOM;
   released = true;
   myservoRoll.write(90); //stop roll background
+  myservoRoll.detach();
   myservoGame.write(BOX_CLOSE); //close game box
   myservoBird.write(birdup);//bird go back to position 40
   digitalWrite(ledPin, HIGH);
