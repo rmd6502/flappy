@@ -37,8 +37,6 @@ uint8_t jumpDurations[] = {
 
 void setup() 
 { 
-  myservoBird.attach(characterServoPin);
-  //myservoRoll.attach(rollServoPin);
   myservoGame.attach(lidServoPin);
   myservoGame.write(BOX_CLOSE); 
   pinMode(magnetPin, INPUT_PULLUP);  //reed
@@ -47,6 +45,7 @@ void setup()
   PUEA = (_BV(magnetPin) | _BV(buttonPin));
 //  bitSet(PUEA, _BV(magnetPin) | _BV(buttonPin));
   pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
   Serial1.begin(115200);
   Serial1.println("Starting");
 } 
@@ -63,6 +62,7 @@ void loop() {
     delay (700);
     myservoRoll.attach(rollServoPin);
     myservoRoll.write(90); //roll background
+    myservoBird.attach(characterServoPin);
 
     in_game=true;
     released = false;
@@ -124,8 +124,10 @@ void game_over(){
   myservoRoll.write(90); //stop roll background
   myservoRoll.detach();
   myservoGame.write(BOX_CLOSE); //close game box
+  myservoGame.detach();
   myservoBird.write(birdup);//bird go back to position 40
-  digitalWrite(ledPin, HIGH);
+  myservoBird.detach();
+//  digitalWrite(ledPin, HIGH);
   for (int thisNote = 0; thisNote < (sizeof(melody)/sizeof(melody[0])); thisNote++) {
     int noteDuration = 1000/noteDurations[thisNote];
     tone(speakerPin, melody[thisNote],noteDuration);
