@@ -39,6 +39,9 @@ void setup()
 { 
   myservoGame.attach(lidServoPin);
   myservoGame.write(BOX_CLOSE); 
+  delay(100);
+  myservoGame.detach();
+  
   pinMode(magnetPin, INPUT_PULLUP);  //reed
   pinMode(buttonPin, INPUT_PULLUP); //button 
   // Enable the pullup resistor for Port A0
@@ -46,6 +49,10 @@ void setup()
 //  bitSet(PUEA, _BV(magnetPin) | _BV(buttonPin));
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
+  noTone(speakerPin);
+  pinMode(speakerPin, OUTPUT);
+  digitalWrite(speakerPin, LOW);
+  
   Serial1.begin(115200);
   Serial1.println("Starting");
 } 
@@ -61,9 +68,8 @@ void loop() {
     birdup=CHARACTER_BOTTOM; //bird position
     delay (700);
     myservoRoll.attach(rollServoPin);
-    myservoRoll.write(90); //roll background
+    myservoRoll.write(120); //roll background
     myservoBird.attach(characterServoPin);
-
     in_game=true;
     released = false;
   }
