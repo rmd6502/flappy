@@ -1,3 +1,5 @@
+include<MCAD/nuts_and_bolts.scad>;
+
 $fn=60;
 
 module opto(diameter, height,tint=[1,1,1],lead_spacing=2.54,collar_width=.9,collar_height=1)
@@ -26,12 +28,13 @@ angle = 90-atan2(20,5);
 module halfBlock()
 {
 	difference() {
-		color([1.0,0.2,1.0]) translate([-7,0,-3]) cube([24,4,6]);
+		color([1.0,0.2,1.0]) translate([-7,0,-5]) cube([24,4,8]);
 		rotate([0,angle,0])opto(diameter=3,height=5.25,collar_width=0.5,tint=[0.1,0.1,0.1]);
 		translate([9+4*sin(angle),0,-3.35/2]) rotate([0,angle,180])opto(diameter=5,height=8.6,tint=[1,0,0]);
-		translate([4.3,0,-3]) cylinder(d=2.75,h=6);
-		translate([-4.3,5.5,0]) rotate([90,0,0]) cylinder(d=2.75,h=6);
-		translate([14.8,5.5,0]) rotate([90,0,0]) cylinder(d=2.75,h=6);
+		translate([4.5,0,-5]) cylinder(d=3.3,h=6);
+		translate([4.5,0,-5]) nutHole(3);
+		translate([-4.3,5.5,-1]) rotate([90,0,0]) cylinder(d=3.3,h=6);
+		translate([14.8,5.5,-1]) rotate([90,0,0]) cylinder(d=3.3,h=6);
 	}
 }
 
