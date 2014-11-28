@@ -30,7 +30,7 @@ module halfBlock()
 	difference() {
 		color([1.0,0.2,1.0]) translate([-7,0,-5]) cube([24,4,8]);
 		rotate([0,angle,0])opto(diameter=3,height=5.25,collar_width=1,tint=[0.1,0.1,0.1]);
-		rotate([0,angle,0])translate([-2,0,-6])cube([3.6,1,6]);
+		rotate([0,angle,0])translate([-2,-.01,-6])cube([3.6,1.01,6]);
 		translate([9+4*sin(angle),0,-3.35/2]) rotate([0,angle,180])opto(diameter=5,height=8.6,tint=[1,0,0]);
 		translate([12.4+4*sin(angle),1,-3.35/2-5.3]) rotate([0,angle,180])cube([3.6,1.2,6]);
 		translate([4.5,0,-5]) cylinder(d=3.3,h=6);
