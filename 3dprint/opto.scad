@@ -2,7 +2,7 @@ include<MCAD/nuts_and_bolts.scad>;
 
 $fn=60;
 
-module opto(diameter, height,tint=[1,1,1],lead_spacing=2.54,collar_width=.9,collar_height=1)
+module opto(diameter, height,tint=[1,1,1],lead_spacing=2.54,collar_width=.9,collar_height=1.25)
 {
 	assign(radius=diameter/2) {
 		 union() {
@@ -23,20 +23,28 @@ module opto(diameter, height,tint=[1,1,1],lead_spacing=2.54,collar_width=.9,coll
 	}
 }
 
-angle = 90-atan2(20,5);
+angle = 90-atan2(15,5);
 
 module halfBlock()
 {
 	difference() {
-		color([1.0,0.2,1.0]) translate([-7,0,-5]) cube([24,4,8]);
-		rotate([0,angle,0])opto(diameter=3,height=5.25,collar_width=1,tint=[0.1,0.1,0.1]);
-		rotate([0,angle,0])translate([-2,-.01,-6])cube([3.6,1.01,6]);
-		translate([9+4*sin(angle),0,-3.35/2]) rotate([0,angle,180])opto(diameter=5,height=8.6,tint=[1,0,0]);
-		translate([12.4+4*sin(angle),1,-3.35/2-5.3]) rotate([0,angle,180])cube([3.6,1.2,6]);
-		translate([4.5,0,-5]) cylinder(d=3.3,h=6);
-		translate([4.5,0,-5]) nutHole(3);
-		translate([-4.3,5.5,-1]) rotate([90,0,0]) cylinder(d=3.3,h=6);
-		translate([14.8,5.5,-1]) rotate([90,0,0]) cylinder(d=3.3,h=6);
+		color([1.0,0.2,1.0]) translate([-7.3,0,-5]) cube([30,4,8]);
+
+		// black phototransistor
+		rotate([0,angle,0])opto(diameter=3.25,height=5.25,collar_width=1,tint=[0.1,0.1,0.1]);
+		rotate([0,angle,0])translate([-1.75,-.01,-6])cube([3.6,1.01,6]);
+		
+		// IR LED
+		translate([13.4+4*sin(angle),0,-3.35/2]) rotate([0,angle,180])opto(diameter=5.25,height=8.6,collar_width=1.25,tint=[.3,.1,.7]);		
+		translate([17+4*sin(angle),1,-3.35/2-5.1]) rotate([0,angle,180])cube([3.6,1.01,6]);
+
+		// captive nut
+		translate([6.5,0,-5]) cylinder(d=3.3,h=7);
+		translate([6.5,0,-4]) nutHole(3,tolerance=.3);
+		
+		// screw holes
+		translate([-4.8,5.5,-1]) rotate([90,0,0]) cylinder(d=3.5,h=6);
+		translate([20.4,5.5,-1]) rotate([90,0,0]) cylinder(d=3.5,h=6);
 	}
 }
 
