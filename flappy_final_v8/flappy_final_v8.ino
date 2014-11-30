@@ -140,7 +140,7 @@ void game_over(){
   myservoGame.detach();
   myservoBird.write(birdup);//bird go back to position 40
   myservoBird.detach();
-  digitalWrite(ledPin, HIGH);
+  digitalWrite(ledPin, LOW);
 //  digitalWrite(ledPin, HIGH);
   for (int thisNote = 0; thisNote < (sizeof(melody)/sizeof(melody[0])); thisNote++) {
     int noteDuration = 1000/noteDurations[thisNote];
