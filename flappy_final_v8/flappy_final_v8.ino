@@ -70,7 +70,7 @@ void loop() {
   if (buttonState == LOW && in_game==false){
     Serial1.println("Starting game");
     myservoGame.write(BOX_OPEN); //open box
-    birdup=CHARACTER_BOTTOM; //bird position
+    birdup=(CHARACTER_BOTTOM+CHARACTER_TOP)/2; //bird position
     delay (700);
     myservoRoll.attach(rollServoPin);
     myservoRoll.write(120); //roll background
@@ -132,7 +132,7 @@ void loop() {
 void game_over(){
   //reset all the variables
   in_game =false;
-  birdup = CHARACTER_BOTTOM;
+  birdup = (CHARACTER_BOTTOM + CHARACTER_TOP)/2;
   released = true;
   myservoRoll.write(90); //stop roll background
   myservoRoll.detach();
