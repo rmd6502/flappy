@@ -5,8 +5,13 @@
 #define BOX_OPEN 90
 #define BOX_CLOSE 0
 
-#define CHARACTER_BOTTOM 40
-#define CHARACTER_TOP 85
+// Constant multiplier
+#define DEG_PER_MM (180.0/(21.0*3.14159))
+
+// Now in mm
+#define CHARACTER_BOTTOM 0
+#define CHARACTER_TOP (60.0*DEG_PER_MM)
+#define JUMP_DISTANCE (10.0*DEG_PER_MM)
 
 const uint8_t magnetPin = hall_input;     // the number of the reed switch
 const uint8_t buttonPin = start_button;  // the number of the pushbutton pin for bird
@@ -72,6 +77,7 @@ void loop() {
     myservoBird.attach(characterServoPin);
     in_game=true;
     released = false;
+    digitalWrite(ledPin, HIGH);
   }
   if(in_game==true)
   {
@@ -79,9 +85,10 @@ void loop() {
     {
       Serial1.println("up");
       released = false;    
-      if(birdup > 10){
-        birdup-=10; //going up
-
+      if(birdup > (CHARACTER_BOTTOM)){
+        birdup-=(JUMP_DISTANCE); //going up
+      } else {
+        birdup = CHARACTER_BOTTOM;
       }
       for (int thisNote = 0; thisNote < (sizeof(jumpmusic)/sizeof(jumpmusic[0])); thisNote++) {
         int jumpDuration = 1000/jumpDurations[thisNote];
@@ -133,6 +140,7 @@ void game_over(){
   myservoGame.detach();
   myservoBird.write(birdup);//bird go back to position 40
   myservoBird.detach();
+  digitalWrite(ledPin, HIGH);
 //  digitalWrite(ledPin, HIGH);
   for (int thisNote = 0; thisNote < (sizeof(melody)/sizeof(melody[0])); thisNote++) {
     int noteDuration = 1000/noteDurations[thisNote];
