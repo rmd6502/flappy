@@ -13,6 +13,9 @@
 #define CHARACTER_TOP (60.0*DEG_PER_MM)
 #define JUMP_DISTANCE (10.0*DEG_PER_MM)
 
+// 
+static const uint32_t gracePeriod = 1000;
+
 const uint8_t magnetPin = hall_input;     // the number of the reed switch
 const uint8_t buttonPin = start_button;  // the number of the pushbutton pin for bird
 const uint8_t speakerPin = speaker;
@@ -63,6 +66,7 @@ void setup()
 } 
 
 void loop() {
+  static uint32_t gameStartTime = 0;
   magnetState = digitalRead(magnetPin);
   buttonState = digitalRead(buttonPin);
 
@@ -78,6 +82,7 @@ void loop() {
     in_game=true;
     released = false;
     digitalWrite(ledPin, HIGH);
+    gameStartTime = millis();
   }
   if(in_game==true)
   {
@@ -120,7 +125,7 @@ void loop() {
       game_over();
     }
     //game over: when bird hit pipes
-    if (magnetState == LOW) 
+    if (magnetState == LOW && millis() - gameStartTime >= gracePeriod) 
     {   
          Serial1.println("Game over 2"); 
       game_over();

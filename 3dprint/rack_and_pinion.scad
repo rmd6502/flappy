@@ -150,16 +150,19 @@ function outer_radius    (mm_per_tooth=3,number_of_teeth=11,clearance=0.1)    //
 //The gears will continue to be rotated to mesh correctly if you change the number of teeth.
 $fn=60;
 n1 = 11; //red gear number of teeth
-n2 = 30; //green gear
+n2 = 42; //green gear
 n3 = 5;  //blue gear
 n4 = 20; //orange gear
-n5 = 22;  //gray rack
 mm_per_tooth = 4.2563; //all meshing gears need the same mm_per_tooth (and the same pressure_angle)
-thickness    = 8;
+n5 = ceil(4.5*25.4/mm_per_tooth);  //gray rack
+thickness    = 4;
 hole         = 1;
-height       = 5;
+height       = 3.5;
 
 pi=3.1415926535;
+
+print_gear = true;
+print_rack = false;
 
 d1 =pitch_radius(mm_per_tooth,n2);
 d12=pitch_radius(mm_per_tooth,n1) + pitch_radius(mm_per_tooth,n2);
@@ -168,20 +171,25 @@ d14=pitch_radius(mm_per_tooth,n1) + pitch_radius(mm_per_tooth,n4);
 
 //translate([ 0,    0, 0]) rotate([0,0, $t*360/n1])                 color([1.00,0.75,0.75]) gear(mm_per_tooth,n1,thickness,hole);
 
-//translate([ 1.32,  d1+.95, 0]) rotate([0,0,-($t*22.5+n2/2-0*n1+1/2)*360/n2]) color([0.75,1.00,0.75])  
-//difference() {
-//	gear(mm_per_tooth,n2,thickness,hole);
-//	translate([0,0,-thickness+2.5])servo_horn(thickness);
-//} 
+if (print_gear) {
+	translate([ 1.32,  d1+.95, 0]) rotate([0,0,-($t*22.5+n2/2-0*n1+1/2)*360/n2]) color([0.75,1.00,0.75])  
+	difference() {
+		gear(mm_per_tooth,n2,thickness-.5,hole);
+		#translate([0,0,-thickness/2])servo_horn(thickness);
+	} 
+}
 
 
 //translate([ d13,  0, 0]) rotate([0,0,-($t-n3/4+n1/4+1/2)*360/n3]) color([0.75,0.75,1.00]) gear(mm_per_tooth,n3,thickness,hole);
 //translate([ d13,  0, 0]) rotate([0,0,-($t-n3/4+n1/4+1/2)*360/n3]) color([0.75,0.75,1.00]) gear(mm_per_tooth,n3,thickness,hole);
 //translate([-d14,  0, 0]) rotate([0,0,-($t-n4/4-n1/4+1/2-floor(n4/4)-3)*360/n4]) color([1.00,0.75,0.50]) gear(mm_per_tooth,n4,thickness,hole,0,n4-3);
-translate([-$t*mm_per_tooth*22.5+1.45, 0.7, 0]) rotate([0,0,0]) color([0.75,0.75,0.75]) union() {
-	translate([-mm_per_tooth,-height+1.35,-thickness/2-2]) cube([mm_per_tooth * (n5+1),height+2,2]);
-	rack(mm_per_tooth,n5,thickness,height,0,.25);
-	translate([-mm_per_tooth,-height+1.35,thickness/2]) cube([mm_per_tooth * (n5+1),height+2,2]);
+
+if (print_rack) rotate([90,0,0]) {
+	translate([-$t*mm_per_tooth*22.5+1.45, 0.7, 0]) rotate([0,0,0]) color([0.75,0.75,0.75]) union() {
+		translate([-mm_per_tooth,-height+1.35,-thickness/2-2]) cube([mm_per_tooth * (n5+1),height+1,2]);
+		rack(mm_per_tooth,n5,thickness,height,0,.25);
+		translate([-mm_per_tooth,-height+1.35,thickness/2]) cube([mm_per_tooth * (n5+1),height+1,2]);
+	}
 }
 //translate([(-floor(n5/2)-floor(n1/2)+$t+n1/2-1/2)*9, -d1+0.0, thickness*2]) rotate([0,0,0]) color([0.75,0.75,0.75]) rack(4.625,25,thickness,height);
 
