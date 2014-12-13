@@ -1,7 +1,7 @@
 $fn=50;
 inch = 25.4;
 
-height=16.3;
+height=15.5;
 
 union() {
 
