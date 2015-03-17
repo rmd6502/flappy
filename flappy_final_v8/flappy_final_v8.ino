@@ -53,7 +53,6 @@ void setup()
   pinMode(magnetPin, INPUT_PULLUP);  //reed
   pinMode(buttonPin, INPUT_PULLUP); //button 
   // Enable the pullup resistor for Port A0
-  PUEA = (_BV(magnetPin) | _BV(buttonPin));
 //  bitSet(PUEA, _BV(magnetPin) | _BV(buttonPin));
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
@@ -61,8 +60,8 @@ void setup()
   pinMode(speakerPin, OUTPUT);
   digitalWrite(speakerPin, LOW);
   
-  Serial1.begin(115200);
-  Serial1.println("Starting");
+  Serial.begin(115200);
+  Serial.println("Starting");
 } 
 
 void loop() {
@@ -72,12 +71,12 @@ void loop() {
 
   //start game 
   if (buttonState == LOW && in_game==false){
-    Serial1.println("Starting game");
+    Serial.println("Starting game");
     myservoGame.write(BOX_OPEN); //open box
     birdup=(CHARACTER_BOTTOM+CHARACTER_TOP)/2; //bird position
     delay (700);
     myservoRoll.attach(rollServoPin);
-    myservoRoll.write(120); //roll background
+    myservoRoll.write(10); //roll background
     myservoBird.attach(characterServoPin);
     in_game=true;
     released = false;
@@ -88,7 +87,7 @@ void loop() {
   {
     if ((buttonState == LOW) && released ==true)
     {
-      Serial1.println("up");
+      Serial.println("up");
       released = false;    
       if(birdup > (CHARACTER_BOTTOM)){
         birdup-=(JUMP_DISTANCE); //going up
@@ -105,7 +104,7 @@ void loop() {
     else
     {
       if(birdup < CHARACTER_TOP){
-        Serial1.println("down");
+        Serial.println("down");
         birdup+=1; //going down
         delay(10);
       }
@@ -121,13 +120,13 @@ void loop() {
     //game over; when bird hits ground
     if (birdup >= CHARACTER_TOP)
     {
-          Serial1.println("Game over 1");
+          Serial.println("Game over 1");
       game_over();
     }
     //game over: when bird hit pipes
     if (magnetState == LOW && millis() - gameStartTime >= gracePeriod) 
     {   
-         Serial1.println("Game over 2"); 
+         Serial.println("Game over 2"); 
       game_over();
     }
   }
